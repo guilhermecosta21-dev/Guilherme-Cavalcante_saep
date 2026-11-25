@@ -1,0 +1,28 @@
+﻿@model IEnumerable<appClinica.Models.Medico>
+@{
+    ViewData["Title"] = "Médicos Veterinários";
+}
+<h1>Médicos Veterinários</h1>
+@if (TempData["Erro"] != null)
+{
+     <div class="alert alert-danger">@TempData["Erro"]</div>
+}
+<p><a asp-action="Create" class="btn btn-success">+ Novo Médico</a></p>
+<table class="table table-striped">
+    <thead><tr><th>Nome</th><th>CRMV</th><th>Especialidade</th><th>Ações</th></tr></thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Crmv</td>
+                <td>@item.Especialidade</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Codigo" class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Codigo" class="btn btn-sm btn-info">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@item.Codigo" class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,40 @@
+﻿@model appClinica.Models.Agendamento
+@{
+    ViewData["Title"] = "Alterar Data do Agendamento";
+}
+<h1>Alterar Data do Agendamento</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Codigo" />
+            <div class="form-group mb-3">
+                <label asp-for="DataAgendamento" class="control-label"></label>
+                <input asp-for="DataAgendamento" class="form-control" type="datetime-local" />
+                <span asp-validation-for="DataAgendamento" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="TutorId" class="control-label">Tutor</label>
+                <select asp-for="TutorId" class="form-control" asp-items="ViewBag.TutorId"></select>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="PetId" class="control-label">Pet</label>
+                <select asp-for="PetId" class="form-control" asp-items="ViewBag.PetId"></select>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="MedicoId" class="control-label">Médico Veterinário</label>
+                <select asp-for="MedicoId" class="form-control" asp-items="ViewBag.MedicoId"></select>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Salvar Alteração" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+ }

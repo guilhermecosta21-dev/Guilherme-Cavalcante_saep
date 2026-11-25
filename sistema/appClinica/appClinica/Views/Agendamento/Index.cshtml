@@ -1,0 +1,39 @@
+﻿@model IEnumerable<appClinica.Models.Agendamento>
+@{
+    ViewData["Title"] = "Agendamentos";
+}
+<h1>Agendamentos</h1>
+<p><a asp-action="Create" class="btn btn-success">+ Novo Agendamento</a></p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Data/Hora</th>
+            <th>Tutor</th>
+            <th>Telefone</th>
+            <th>Pet</th>
+            <th>Espécie/Raça</th>
+            <th>Médico</th>
+            <th>CRMV</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DataAgendamento.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@item.Tutor?.Nome</td>
+                <td>@item.Tutor?.Telefone</td>
+                <td>@item.Pet?.Nome</td>
+                <td>@item.Pet?.Especie / @item.Pet?.Raca</td>
+                <td>@item.Medico?.Nome</td>
+                <td>@item.Medico?.Crmv</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Codigo" class="btn btn-sm btn-warning">Alterar Data</a>
+                    <a asp-action="Details" asp-route-id="@item.Codigo" class="btn btn-sm btn-info">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@item.Codigo" class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

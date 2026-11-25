@@ -1,0 +1,15 @@
+﻿@model appClinica.Models.Medico
+@{
+    ViewData["Title"] = "Detalhes do Médico";
+}
+<h1>Detalhes do Médico</h1>
+<dl class="row">
+    <dt class="col-sm-3">Nome</dt>
+    <dd class="col-sm-9">@Model.Nome</dd>
+    <dt class="col-sm-3">CRMV</dt>
+    <dd class="col-sm-9">@Model.Crmv</dd>
+    <dt class="col-sm-3">Especialidade</dt>
+    <dd class="col-sm-9">@Model.Especialidade</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.Codigo" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>

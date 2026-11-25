@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Clínica Veterinária</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Clínica Veterinária</a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Início</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Tutor" asp-action="Index">Tutores</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Pet" asp-action="Index">Pets</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Medico" asp-action="Index">Médicos</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-controller="Agendamento" asp-action="Index">Agendamentos</a></li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item"><span class="nav-link text-dark">Olá, <strong>@User.Identity.Name</strong></span></li>
+                            <li class="nav-item"><a class="nav-link text-danger" asp-controller="Account" asp-action="Logout">Sair</a></li>
+                        }
+                        else
+                        {
+                            <li class="nav-item"><a class="nav-link text-primary" asp-controller="Account" asp-action="Login">Entrar</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">@RenderBody()</main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

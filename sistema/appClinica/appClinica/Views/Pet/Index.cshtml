@@ -1,0 +1,29 @@
+﻿@model IEnumerable<appClinica.Models.Pet>
+@{
+    ViewData["Title"] = "Pets";
+}
+<h1>Pets</h1>
+@if (TempData["Erro"] != null)
+{
+     <div class="alert alert-danger">@TempData["Erro"]</div>
+}
+<p><a asp-action="Create" class="btn btn-success">+ Novo Pet</a></p>
+<table class="table table-striped">
+    <thead><tr><th>Nome</th><th>Espécie</th><th>Raça</th><th>Tutor</th><th>Ações</th></tr></thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Especie</td>
+                <td>@item.Raca</td>
+                <td>@item.Tutor?.Nome</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Codigo" class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Codigo" class="btn btn-sm btn-info">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@item.Codigo" class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,19 @@
+﻿@model appClinica.Models.Tutor
+@{
+    ViewData["Title"] = "Detalhes do Tutor";
+}
+<h1>Detalhes do Tutor</h1>
+<dl class="row">
+    <dt class="col-sm-3">Nome</dt>
+    <dd class="col-sm-9">@Model.Nome</dd>
+    <dt class="col-sm-3">Telefone</dt>
+    <dd class="col-sm-9">@Model.Telefone</dd>
+    <dt class="col-sm-3">Data Nascimento</dt>
+    <dd class="col-sm-9">@Model.DataNascimento.ToString("dd/MM/yyyy")</dd>
+    <dt class="col-sm-3">CPF</dt>
+    <dd class="col-sm-9">protegido (LGPD)</dd>
+    <dt class="col-sm-3">Pets</dt>
+    <dd class="col-sm-9">@string.Join(", ", Model.Pets.Select(p => p.Nome))</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.Codigo" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>

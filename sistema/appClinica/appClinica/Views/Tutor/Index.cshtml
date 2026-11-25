@@ -1,0 +1,42 @@
+﻿@model IEnumerable<appClinica.Models.Tutor>
+@{
+    ViewData["Title"] = "Tutores";
+}
+<h1>Tutores</h1>
+@if (TempData["Erro"] != null)
+{
+     <div class="alert alert-danger">@TempData["Erro"]</div>
+}
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <form asp-action="Index" method="get">
+            <div class="input-group">
+                <input type="text" name="pesquisa" class="form-control" placeholder="Pesquisar por nome, telefone ou CPF..." />
+                <button type="submit" class="btn btn-primary">Pesquisar</button>
+                <a asp-action="Index" class="btn btn-secondary">Limpar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<p><a asp-action="Create" class="btn btn-success">+ Novo Tutor</a></p>
+<table class="table table-striped">
+    <thead><tr><th>Nome</th><th>Telefone</th><th>Data Nascimento</th><th>CPF</th><th>Ações</th></tr></thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Telefone</td>
+                <td>@item.DataNascimento.ToString("dd/MM/yyyy")</td>
+                <td>protegido (LGPD)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Codigo" class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Codigo" class="btn btn-sm btn-info">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@item.Codigo" class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

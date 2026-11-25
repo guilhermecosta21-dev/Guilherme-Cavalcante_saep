@@ -1,0 +1,17 @@
+﻿@model appClinica.Models.Medico
+@{
+    ViewData["Title"] = "Excluir Médico";
+}
+<h1>Excluir Médico</h1>
+<h3 class="text-danger">Tem certeza que deseja excluir?</h3>
+<dl class="row">
+    <dt class="col-sm-3">Nome</dt>
+    <dd class="col-sm-9">@Model.Nome</dd>
+    <dt class="col-sm-3">CRMV</dt>
+    <dd class="col-sm-9">@Model.Crmv</dd>
+</dl>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Codigo" />
+    <input type="submit" value="Excluir" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</form>

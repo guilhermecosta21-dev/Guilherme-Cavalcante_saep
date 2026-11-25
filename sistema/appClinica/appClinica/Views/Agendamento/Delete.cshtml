@@ -1,0 +1,21 @@
+﻿@model appClinica.Models.Agendamento
+@{
+    ViewData["Title"] = "Excluir Agendamento";
+}
+<h1>Excluir Agendamento</h1>
+<h3 class="text-danger">Tem certeza que deseja excluir?</h3>
+<dl class="row">
+    <dt class="col-sm-3">Data/Hora</dt>
+    <dd class="col-sm-9">@Model.DataAgendamento.ToString("dd/MM/yyyy HH:mm")</dd>
+    <dt class="col-sm-3">Tutor</dt>
+    <dd class="col-sm-9">@Model.Tutor?.Nome</dd>
+    <dt class="col-sm-3">Pet</dt>
+    <dd class="col-sm-9">@Model.Pet?.Nome</dd>
+    <dt class="col-sm-3">Médico</dt>
+    <dd class="col-sm-9">@Model.Medico?.Nome</dd>
+</dl>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Codigo" />
+    <input type="submit" value="Excluir" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</form>

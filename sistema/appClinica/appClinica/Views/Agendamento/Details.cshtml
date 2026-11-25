@@ -1,0 +1,25 @@
+﻿@model appClinica.Models.Agendamento
+@{
+    ViewData["Title"] = "Detalhes do Agendamento";
+}
+<h1>Detalhes do Agendamento</h1>
+<dl class="row">
+    <dt class="col-sm-3">Data/Hora</dt>
+    <dd class="col-sm-9">@Model.DataAgendamento.ToString("dd/MM/yyyy HH:mm")</dd>
+    <dt class="col-sm-3">Tutor</dt>
+    <dd class="col-sm-9">@Model.Tutor?.Nome</dd>
+    <dt class="col-sm-3">Telefone</dt>
+    <dd class="col-sm-9">@Model.Tutor?.Telefone</dd>
+    <dt class="col-sm-3">Pet</dt>
+    <dd class="col-sm-9">@Model.Pet?.Nome</dd>
+    <dt class="col-sm-3">Espécie/Raça</dt>
+    <dd class="col-sm-9">@Model.Pet?.Especie / @Model.Pet?.Raca</dd>
+    <dt class="col-sm-3">Médico</dt>
+    <dd class="col-sm-9">@Model.Medico?.Nome</dd>
+    <dt class="col-sm-3">CRMV</dt>
+    <dd class="col-sm-9">@Model.Medico?.Crmv</dd>
+    <dt class="col-sm-3">Especialidade</dt>
+    <dd class="col-sm-9">@Model.Medico?.Especialidade</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.Codigo" class="btn btn-warning">Alterar Data</a>
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>

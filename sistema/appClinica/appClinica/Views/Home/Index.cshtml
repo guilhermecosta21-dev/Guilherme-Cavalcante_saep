@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Página Principal";
+}
+
+<div class="text-center mt-4">
+    <h1>Bem-vindo(a), <strong>@User.Identity?.Name</strong>!</h1>
+    <p class="text-muted">Sistema de Gestão da Clínica Veterinária</p>
+</div>
+
+<div class="row mt-4 g-3">
+    <div class="col-md-4">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <h5>Tutores</h5><p>Cadastro, busca e edição.</p>
+                <a asp-controller="Tutor" asp-action="Index" class="btn btn-primary">Acessar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <h5>Pets</h5><p>Cadastro vinculado ao tutor.</p>
+                <a asp-controller="Pet" asp-action="Index" class="btn btn-primary">Acessar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <h5>Médicos</h5><p>CRUD de veterinários (CRMV).</p>
+                <a asp-controller="Medico" asp-action="Index" class="btn btn-primary">Acessar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <h5>Agendamentos</h5><p>Tutor + Pet + Médico, por dia.</p>
+                <a asp-controller="Agendamento" asp-action="Index" class="btn btn-primary">Acessar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <h5>Sair</h5><p>Encerrar sua sessão.</p>
+                <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
